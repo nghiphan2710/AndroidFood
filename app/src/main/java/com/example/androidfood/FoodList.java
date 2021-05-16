@@ -68,10 +68,12 @@ public class FoodList extends AppCompatActivity {
                 });
 
             }
+            
 
         };
         recyclerView.setAdapter(adapter);
-        int i = 0;
+
+
     }
 
 }
