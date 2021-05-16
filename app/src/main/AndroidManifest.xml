@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidFood">
-        <activity android:name=".AddFood"></activity>
+        <activity android:name=".SignupAdmin"></activity>
+        <activity android:name=".admin" />
+        <activity android:name=".AddFood" />
         <activity android:name=".FoodList" />
         <activity
             android:name=".Home"

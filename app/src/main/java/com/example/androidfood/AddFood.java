@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -88,6 +89,8 @@ public class AddFood extends AppCompatActivity {
                 food.setMenuId(txtmenuid.getText().toString());
                 table_food.child(String.valueOf(maid+1)).setValue(food);
                 Toast.makeText(AddFood.this, "Add Food Successfully", Toast.LENGTH_SHORT).show();
+                Intent admin = new Intent(AddFood.this, com.example.androidfood.admin.class);
+                startActivity(admin);
                 finish();
 
             }

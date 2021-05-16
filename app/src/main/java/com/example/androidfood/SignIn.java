@@ -72,25 +72,35 @@ public class SignIn extends AppCompatActivity {
                 table_user.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.child(edtPhone.getText().toString()).exists()) {
-                            mDialog.dismiss();
-                            User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
-                            if (user.getPassword().equals(edtPass.getText().toString())) {
-                                Intent homeIntent =  new Intent(SignIn.this,Home.class);
-                                Commen.currentUser = user;
-                                startActivity(homeIntent);
-                                finish();
+                            if(dataSnapshot.child(edtPhone.getText().toString()).exists()) {
+                                mDialog.dismiss();
+                                User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
 
-                            } else {
-                                Toast.makeText(SignIn.this, "Sign in failed", Toast.LENGTH_SHORT).show();
+                                if (user.getPassword().equals(edtPass.getText().toString()) && user.getStatus() == 0) {
+                                    Intent homeIntent =  new Intent(SignIn.this,Home.class);
+                                    Commen.currentUser = user;
+                                    startActivity(homeIntent);
+                                    finish();
+
+                                }else if(user.getPassword().equals(edtPass.getText().toString()) && user.getStatus() == 1){
+                                    Intent admin =  new Intent(SignIn.this,admin.class);
+                                    Commen.currentUser = user;
+                                    startActivity(admin);
+                                    finish();
+
+                                }
+                                else {
+                                    Toast.makeText(SignIn.this, "Sign in failed", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            else{
+                                mDialog.dismiss();
+                                Toast.makeText(SignIn.this, "User not exists", Toast.LENGTH_SHORT).show();
+
                             }
                         }
-                        else{
-                            mDialog.dismiss();
-                            Toast.makeText(SignIn.this, "User not exists", Toast.LENGTH_SHORT).show();
 
-                        }
-                    }
+
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {

@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,10 +15,8 @@ import android.widget.RelativeLayout;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
-
-public class MainActivity extends AppCompatActivity {
-    Button btnSignin, btnSignup,btnAddfood;
-
+public class admin extends AppCompatActivity {
+    Button btn_addfood, btn_signin;
     ImageView ivLogo;
     RelativeLayout ivBackground;
 
@@ -43,30 +40,28 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_admin);
 
-        btnSignin = findViewById(R.id.btn_signin);
-        btnSignup = findViewById(R.id.btn_signup);
-        btnAddfood = findViewById(R.id.btn_addfood);
-        ivLogo = findViewById(R.id.iv_logo);
-        ivBackground = findViewById(R.id.img_backround);
+        btn_addfood = findViewById(R.id.btn_addfoodadmin);
+        btn_signin =  findViewById(R.id.btn_signupadmin);
+        ivLogo = findViewById(R.id.iv_logoadmin);
+        ivBackground = findViewById(R.id.img_backroundadmin);
 
-        btnSignup.setOnClickListener(new View.OnClickListener() {
+        btn_addfood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signup = new Intent(MainActivity.this,SignUp.class);
-                startActivity(signup);
+                Intent addfood = new Intent(admin.this,AddFood.class);
+                startActivity(addfood);
             }
         });
 
-        btnSignin.setOnClickListener(new View.OnClickListener() {
+        btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signin = new Intent(MainActivity.this,SignIn.class);
-                startActivity(signin);
+                Intent siginupadmin = new Intent(admin.this,SignupAdmin.class);
+                startActivity(siginupadmin);
             }
         });
-
 
         Picasso picasso = Picasso.with(this);
         picasso.load(
@@ -76,7 +71,5 @@ public class MainActivity extends AppCompatActivity {
         picasso.load(
                 R.drawable.my_bg
         ).into(target);
-
-
     }
 }

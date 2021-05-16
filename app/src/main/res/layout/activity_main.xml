@@ -44,14 +44,7 @@
                 android:layout_margin="8dp"
                 android:shadowColor="@color/white" />
 
-            <Button
-                android:id="@+id/btn_addfood"
-                android:layout_width="87dp"
-                android:layout_height="wrap_content"
 
-                android:shadowColor="@color/white"
-                android:text="Add Food"
-                android:textColor="@android:color/holo_green_light" />
 
             <Button
                 android:id="@+id/btn_signin"

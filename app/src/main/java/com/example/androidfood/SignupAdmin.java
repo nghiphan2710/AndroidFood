@@ -29,7 +29,7 @@ import com.squareup.picasso.Target;
 
 import Model.User;
 
-public class SignUp extends AppCompatActivity {
+public class SignupAdmin extends AppCompatActivity {
 
     RelativeLayout background;
     EditText edtPhone,edtPass,edtName;
@@ -72,7 +72,7 @@ public class SignUp extends AppCompatActivity {
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProgressDialog mDialog = new ProgressDialog(SignUp.this);
+                ProgressDialog mDialog = new ProgressDialog(SignupAdmin.this);
                 mDialog.setMessage("Please waitting");
                 mDialog.show();
                 table_user.addValueEventListener(new ValueEventListener() {
@@ -80,14 +80,14 @@ public class SignUp extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.child(edtPhone.getText().toString()).exists()){
                             mDialog.dismiss();
-                            Toast.makeText(SignUp.this, "Phone already register", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignupAdmin.this, "Phone already register", Toast.LENGTH_SHORT).show();
                         }
                         else{
                             mDialog.dismiss();
-                            int status = 0;
+                            int status = 1;
                             User user = new User(edtName.getText().toString(),edtPass.getText().toString(),status);
                             table_user.child(edtPhone.getText().toString()).setValue(user);
-                            Toast.makeText(SignUp.this, "Register Successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignupAdmin.this, "Register Successfully", Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }
