@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -57,13 +58,17 @@ public class FoodList extends AppCompatActivity {
             @Override
             protected void populateViewHolder(FoodViewHolder foodViewHolder, Food food, int i) {
                 foodViewHolder.food_name.setText(food.getName());
-                Picasso.with(getBaseContext()).load(    food.getImg()).resize(410,200).into(foodViewHolder.food_img);
+                Picasso.with(getBaseContext()).load(   food.getImg()).resize(410,200).into(foodViewHolder.food_img);
 
                 final Food local = food;
                 foodViewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(FoodList.this,""+local.getName(),Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(FoodList.this,""+local.getName(),Toast.LENGTH_SHORT).show();
+                        Intent fooddetail = new Intent(FoodList.this,FoodDetail.class);
+                        fooddetail.putExtra("foodId",adapter.getRef(position).getKey());
+                        startActivity(fooddetail);
+
                     }
                 });
 
