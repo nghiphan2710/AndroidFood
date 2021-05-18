@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +25,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
+
+import java.lang.annotation.Annotation;
+import java.lang.annotation.ElementType;
+
 
 import Model.Food;
 
@@ -34,22 +39,26 @@ public class AddFood extends AppCompatActivity {
     RelativeLayout background;
     ImageView img_logo;
     int maid = 0;
-    Target target = new Target() {
-        @Override
-        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-            background.setBackground(new BitmapDrawable(getResources(), bitmap));
-        }
 
-        @Override
-        public void onBitmapFailed(Drawable errorDrawable) {
+     Target target = new Target() {
 
-        }
 
-        @Override
-        public void onPrepareLoad(Drawable placeHolderDrawable) {
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                background.setBackground(new BitmapDrawable(getResources(), bitmap));
+            }
 
-        }
-    };
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+            }
+        };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,15 +92,15 @@ public class AddFood extends AppCompatActivity {
         btn_addfood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                food.setName(txtnamefood.getText().toString());
-                food.setImg(txtimgfood.getText().toString());
-                food.setPrice(txtprice.getText().toString());
-                food.setMenuId(txtmenuid.getText().toString());
-                table_food.child(String.valueOf(maid+1)).setValue(food);
-                Toast.makeText(AddFood.this, "Add Food Successfully", Toast.LENGTH_SHORT).show();
-                Intent admin = new Intent(AddFood.this, com.example.androidfood.admin.class);
-                startActivity(admin);
-                finish();
+//                food.setName(txtnamefood.getText().toString());
+//                food.setImg(txtimgfood.getText().toString());
+//                food.setPrice(txtprice.getText().toString());
+//                food.setMenuId(txtmenuid.getText().toString());
+//                table_food.child(String.valueOf(maid+1)).setValue(food);
+//                Toast.makeText(AddFood.this, "Add Food Successfully", Toast.LENGTH_SHORT).show();
+//                Intent admin = new Intent(AddFood.this, com.example.androidfood.admin.class);
+//                startActivity(admin);
+//                finish();
 
             }
         });
